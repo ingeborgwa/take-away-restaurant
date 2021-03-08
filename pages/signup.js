@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import firebase from '../config/firebase';
 import Link from 'next/link';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 
 
-const Singup = ()=>{
+const SignUp = ()=>{
 
     const [email, setEmail]=useState(null);
     const [password, setPassword]=useState(null);
@@ -14,12 +14,11 @@ const Singup = ()=>{
     
     
     const handleSubmit = async(event)=>{
-
         event.preventDefault();
 
         try {
             await firebase.auth().createUserWithEmailAndPassword(email, password);
-            history.push("/");
+            history.push("/meny");
             console.log("Du har blitt logget inn");
             
         } catch (error) {
@@ -55,4 +54,4 @@ const Singup = ()=>{
     )
 }
 
-export default Singup;
+export default SignUp;

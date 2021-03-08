@@ -16,7 +16,7 @@ export default function Nav () {
                 </li>
                 <li>
                     <Link href="/handlekurv">
-                        <a>Handlekurv</a>
+                        <a>Handlekurv</a> 
                     </Link>
                 </li>
             </ul>

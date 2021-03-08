@@ -21,4 +21,5 @@ const firebaseConfig = {
   }
 
   const firbaseInstance = firebase;
-  export default firbaseInstance;
+
+export default firbaseInstance;

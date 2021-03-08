@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import firebase from '../config/firebase';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 const Login = ()=>{
@@ -13,10 +13,10 @@ const Login = ()=>{
     const handleSubmit = async(event)=>{
 
         event.preventDefault();
-        
+
         try {
             await firebase.auth().signInWithEmailAndPassword(email, password);
-            history.push("/")
+            history.push("/meny")
             console.log("Du har blitt logget inn");
             
         } catch (error) {
