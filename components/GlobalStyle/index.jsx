@@ -8,6 +8,10 @@ const GlobalStyle = createGlobalStyle `
     
 }
 
+button{
+    border: none;
+}
+
 
 
 `;
