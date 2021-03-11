@@ -26,5 +26,9 @@ const LogInOutBtn = () => {
   );
 };
 
+<<<<<<< HEAD
 export default LogInOutBtn;
 
+=======
+export default LogInOutBtn;
+>>>>>>> d482c03e7a9eefce7f65e98d54460105a199fe54

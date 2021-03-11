@@ -15,6 +15,7 @@ export const Basket = ({ children }) => {
     setProductLines([...productLines, product]);
   };
 
+<<<<<<< HEAD
 
 
   //Remove from basket
@@ -26,6 +27,8 @@ export const Basket = ({ children }) => {
   
 
 
+=======
+>>>>>>> d482c03e7a9eefce7f65e98d54460105a199fe54
   useEffect(() => {
     const total = productLines.reduce((prev, cur) => {
         console.log("Lagt til", productLines);
@@ -35,7 +38,11 @@ export const Basket = ({ children }) => {
   }, [productLines]);
 
   return (
+<<<<<<< HEAD
     <BasketContext.Provider value={{ productLines, addProductLine, total, removeProductLine }}>
+=======
+    <BasketContext.Provider value={{ productLines, addProductLine, total }}>
+>>>>>>> d482c03e7a9eefce7f65e98d54460105a199fe54
       {children}
     </BasketContext.Provider>
   );

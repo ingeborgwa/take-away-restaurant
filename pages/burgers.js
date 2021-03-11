@@ -3,7 +3,10 @@ import { useRouter } from 'next/router';
 
 import { useBasket } from '../contexts/BasketContext';
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d482c03e7a9eefce7f65e98d54460105a199fe54
 import Nav from './nav';
 
 function Burgers ({burger, error}) {
