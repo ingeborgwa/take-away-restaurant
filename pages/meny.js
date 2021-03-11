@@ -3,21 +3,18 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import Nav from './nav';
+import LogInOutBtn from '../components/LogInOutBtn';
 
 
 function Meny ({burger, error}){
     const router = useRouter();
 
-    const handleSignOut = async () => {
-        await firebase.auth().signOut();
-        router.push("/");
-    };
 
     return(
         <main>
             <Nav />
             <h1>Meny</h1>
-            <button onClick={handleSignOut}>Logg ut</button>
+            <LogInOutBtn />
             <Link href="/burgers">
                 <h2>Burgere</h2>
             </Link>

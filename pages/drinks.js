@@ -1,13 +1,22 @@
 import firebase from '../config/firebase';
 import { useRouter } from 'next/router';
 
+import { useBasket } from '../contexts/BasketContext';
+
+import Nav from './nav';
+
 
 function Drinks ({drinks, error}) {
-
     const router = useRouter()
+    const basket = useBasket();
+
+    const handleAddToBasket = (item) => {
+        basket.addProductLine(item);
+    }
 
     return (
         <>
+            <Nav />
             <h2>Drikke</h2>
             <button onClick={() => router.back()}>Tilbake</button>
             <ul>
@@ -16,7 +25,9 @@ function Drinks ({drinks, error}) {
                         <div key={item.id}>
                             <h2>{item.navn}</h2>
                             <h3>{item.pris}</h3>
-                            <button>Legg til</button>
+                            <button onClick={() => {handleAddToBasket(item)}} type="submit">
+                                Legg til
+                            </button>
                         </div>
                     )
                 })}
