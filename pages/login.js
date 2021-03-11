@@ -3,7 +3,7 @@ import firebase from '../config/firebase';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-const Login = ()=>{
+const Login = () => {
 
     const [email, setEmail]=useState(null);
     const [password, setPassword]=useState(null);
@@ -43,7 +43,7 @@ const Login = ()=>{
                     placeholder="Passord"
                     onChange={e=>setPassword(e.target.value)}
                 />
-                <button type="submit">Logg Inn</button>
+                <button type="submit">Logg inn</button>
                 <Link href="/signup">
                     <a>Registrer ny bruker her</a>
                 </Link>
