@@ -22,22 +22,15 @@ export default function Cart() {
     const router = useRouter();
 
 
-<<<<<<< HEAD
     const handleRemoveProduct = (id) => {
         basket.removeProductLine(id);
     };
 
 
-=======
->>>>>>> d482c03e7a9eefce7f65e98d54460105a199fe54
     return(
         <>
             <Nav />
             <h1>Handlekurv</h1>
-<<<<<<< HEAD
-=======
-            <Box></Box>
->>>>>>> d482c03e7a9eefce7f65e98d54460105a199fe54
             <button onClick={() => router.back()}>Tilbake</button>
             <div>
                 {basket.productLines.map((item) => {
@@ -46,6 +39,7 @@ export default function Cart() {
                             <p key={item.id}>
                                 {item.navn} {item.pris} kr.
                             </p>
+                            <input type="number"/>
                             <button onClick = {() => {
                                 handleRemoveProduct(item.id)
                             }}>
