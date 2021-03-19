@@ -1,20 +1,38 @@
 import firebase from '../config/firebase';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useAuth } from '../auth';
+import { useBasket } from '../contexts/BasketContext';
+import styled from 'styled-components';
 
 import Nav from './nav';
 import LogInOutBtn from '../components/LogInOutBtn';
 
 
-function Meny ({burger, error}){
-    const router = useRouter();
+
+
+
+function Meny (){
+    const basket = useBasket ();
+    const {user} = useAuth();
 
 
     return(
         <main>
-            <Nav />
+            <header>
+                <section>
+                    <p><Link href="/">Hjem</Link></p>
+                    <LogInOutBtn />
+                    <p> {user ? (
+                        <Link href="/cart">
+                        <a>Handlekurv <span>{basket.total} NOK</span></a>
+                        </Link>) : ("")}
+                    </p>
+                </section>
+            </header>
+            
             <h1>Meny</h1>
-            <LogInOutBtn />
+            
             <Link href="/burgers">
                 <h2>Burgere</h2>
             </Link>
@@ -24,7 +42,6 @@ function Meny ({burger, error}){
             <Link href="/drinks">
                 <h2>Drikke</h2>
             </Link>
-            
         </main>
     )
 }
