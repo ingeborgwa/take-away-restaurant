@@ -68,7 +68,7 @@ const Main = styled.main`
     h1{
         margin: 2em;
         font-size: ${props => props.theme.fontSizes.h1};
-        border-bottom: dotted ${props => props.theme.colors.yellow} 5px;
+        border-bottom: solid ${props => props.theme.colors.yellow} 5px;
     }
 
     p{

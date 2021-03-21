@@ -97,11 +97,11 @@ const Kitchen = () => {
                 <h2>Klar til henting</h2>
                 {ready && ready.map((item) => {
                     return (
-                        <Order>
+                        <PickUp>
                             <OrderNumber>{item.orderNumber}</OrderNumber>
                             <StyledBtn
                             onClick = {() =>{delivered(item)}}>Hentet</StyledBtn>
-                        </Order>
+                        </PickUp>
                     )
                 })}
             </section>
@@ -124,8 +124,11 @@ const Main = styled.main`
     margin-right: auto;
 
     h1{
-        margin-bottom:2em;
+        margin:2em;
+        border-bottom: solid ${props => props.theme.colors.yellow} 2px;
     }
+
+
 `;
 
 
@@ -148,10 +151,24 @@ const OrderNumber = styled.p`
     border-color:${props => props.theme.colors.yellow};
     border-style:solid;
     text-align: center;
+    background-color:${props => props.theme.colors.yellow};
         
 `;
 
 const Order = styled.article`
+    display:flex;
+    justify-content: space-between;
+
+    border-bottom: dotted;
+    margin-bottom:2em;
+    margin-top:2em;
+    padding:2em;
+
+    width: 500px; 
+
+`;
+
+const PickUp = styled.section`
     display:flex;
     justify-content:space-between;
 
@@ -160,11 +177,7 @@ const Order = styled.article`
     margin-top:2em;
     padding:2em;
 
-    width: 400px; 
-    /* margin-left: auto;
-    margin-right: auto; */
-
-    
+    width: 200px;
 
 `;
 

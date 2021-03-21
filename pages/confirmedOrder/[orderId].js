@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import firebase from '../../config/firebase';
+import styled from 'styled-components';
 
 const confirmedOrder = () => {
     const router = useRouter();
@@ -36,22 +37,28 @@ const confirmedOrder = () => {
     }, []);
 
     return(
-        <>
-            <h1>Kvittering</h1>
-            <p>{order && order.orderNumber}</p>
-            <section>
-            {
-                order && order.items.map((product) => {
-                    return (
-                        <section>
-                            <p>{product.navn}</p>
-                        </section>
-                    )
-                })
-            }
-            </section>
+        <Main>
+            <h1>Bekreftelse</h1>
+            <h3>Din bestilling er mottatt og er nå sendt til kjøkkenet.</h3>
+            <Order>    
+                <p>Ditt ordrenummer er: <b>{order && order.orderNumber}</b></p>
+                <section>
+                {
+                    order && order.items.map((product) => {
+                        return (
+                            <section>
+                                <h4>Du har bestilt</h4>
+                                <p>{product.navn} x {product.antall}</p>
+                                <p>Totalt {product.pris} NOK</p>
+                            </section>
+                        )
+                    })
+                }
+                </section>
+            </Order>
+            <h3>Håper det smaker!</h3>
             
-        </>
+        </Main>
     )
 };
 
@@ -63,3 +70,26 @@ export async function getServerSideProps (ctx) {
 };
 
 export default confirmedOrder;
+
+
+
+//STYLE
+
+const Main = styled.main`
+    margin-top:5em;
+    text-align: center; 
+
+    margin-left: auto;
+    margin-right: auto;
+
+    h1{
+        margin: 2em;
+        font-size: ${props => props.theme.fontSizes.h1};
+        border-bottom: solid ${props => props.theme.colors.yellow} 5px;
+    }
+`;
+
+
+const Order = styled.section `
+    padding:2em;
+`;

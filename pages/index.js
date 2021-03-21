@@ -1,8 +1,5 @@
-import Nav from './nav';
 import Link from 'next/link';
 import styled from 'styled-components';
-// import img from '../public/frontPageImg.jpg'
-
 
 
 export default function Home (){
@@ -34,6 +31,12 @@ const MainBase = styled.main`
 
   height: 100vh;
   text-align: center;
+
+  h3{
+    &:hover {
+      color:${props => props.theme.colors.yellow};
+    }
+  }
 `;
 
 const LogInBox = styled.div`

@@ -12,7 +12,7 @@ export const StyledBtn = styled.button`
     color: $${props => props.theme.colors.black};
 
     &:hover {
-        color:${props => props.theme.colors.white};
+        background-color:${props => props.theme.colors.white};
     }
 
 `;

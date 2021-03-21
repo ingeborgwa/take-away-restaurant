@@ -95,8 +95,6 @@ export default function Cart() {
 
 
 const Main = styled.main `
-    background-color:${props => props.theme.colors.beige};
-
     text-align: center;
 
     margin-left: auto;

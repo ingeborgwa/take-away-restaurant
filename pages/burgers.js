@@ -86,15 +86,15 @@ export default Burgers;
 
 //STYLES
 
-
-
 const Main = styled.main `
-    background-color:${props => props.theme.colors.beige};
-    
     text-align: center; 
 
     margin-left: auto;
     margin-right: auto;
+
+    h1{
+        margin-top:1.5em;
+    }
 `;
 
 const Header = styled.header`

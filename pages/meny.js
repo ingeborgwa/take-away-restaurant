@@ -8,54 +8,6 @@ import styled from 'styled-components';
 import LogInOutBtn from '../components/LogInOutBtn';
 
 
-const Header = styled.header `
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 2px solid black; 
-    padding: 0.6em;
-    margin-left: auto;
-    margin-right: auto;
-    width: 700px; 
-    align-items: center;
-
-    text-decoration: none;
-`;
-
-
-const Main = styled.main `
-    background-color:${props => props.theme.colors.beige};
-    height: 100vh;
-    text-align: center; 
-`;
-
-const MenyBox = styled.div`
-    /* display: flex;
-    justify-content: center; */
-    background-color: ${props => props.theme.colors.beige};
-    border-style: solid;
-
-    &:hover {
-        background-color:${props => props.theme.colors.yellow};
-    }
-
-    width:9em;
-    height:9em;
-    
-    align-content:center;
-    padding: 2em;
-`;
-
-const Wrapper = styled.section`
-    display: flex;
-    justify-content: space-evenly;
-    padding:2em;
-
-    margin-left: auto;
-    margin-right: auto;
-    width: 600px;
-
-
-`;
 
 
 function Meny (){
@@ -103,46 +55,58 @@ function Meny (){
 
 
 
-            // <ul>
-            //     {burger.map(item=>{
-            //         return(
-            //             <div key={item.id}>
-            //                 <h2>{item.navn}</h2>
-            //                 <p>{item.ingredienser}</p>
-            //                 <h3>{item.pris}kr</h3>
-            //                 <button>Legg til</button>
-            //             </div>
-            //         )
-            //     })}
-            // </ul>
-
-
-
-
-
-// Meny.getInitialProps = async() => {
-//     try{
-//         const burgerCollection = await firebase.firestore().collection('burger');
-//         const burgerData = await burgerCollection.get({})
-
-//         let burger = [];
-//         burgerData.forEach(item => {
-//             burger.push({
-//                 id: item.id,
-//                 ...item.data()
-//             });
-
-//         });
-
-//         return {burger};
-        
-//     }catch(error) {
-//         return{
-//             error: error.message
-//         };
-        
-//     }
-
-// }
 
 export default Meny;
+
+
+//STYLE
+
+const Header = styled.header `
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid black; 
+    padding: 0.6em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px; 
+    align-items: center;
+
+    text-decoration: none;
+`;
+
+
+const Main = styled.main `
+    height: 100vh;
+    text-align: center; 
+
+    h1{
+        margin-top:1.5em;
+    }
+`;
+
+const MenyBox = styled.div`
+    background-color:${props => props.theme.colors.yellow};
+    border-style: solid;
+
+    &:hover {
+        background-color:${props => props.theme.colors.white};
+    }
+
+    width:9em;
+    height:9em;
+    text-align:center;
+    
+    padding-top: 2.5em;
+`;
+
+const Wrapper = styled.section`
+    display: flex;
+    justify-content: space-evenly;
+    padding:2em;
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+
+
+`;
