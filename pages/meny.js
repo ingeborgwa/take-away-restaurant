@@ -5,11 +5,57 @@ import { useAuth } from '../auth';
 import { useBasket } from '../contexts/BasketContext';
 import styled from 'styled-components';
 
-import Nav from './nav';
 import LogInOutBtn from '../components/LogInOutBtn';
 
 
+const Header = styled.header `
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid black; 
+    padding: 0.6em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px; 
+    align-items: center;
 
+    text-decoration: none;
+`;
+
+
+const Main = styled.main `
+    background-color:${props => props.theme.colors.beige};
+    height: 100vh;
+    text-align: center; 
+`;
+
+const MenyBox = styled.div`
+    /* display: flex;
+    justify-content: center; */
+    background-color: ${props => props.theme.colors.beige};
+    border-style: solid;
+
+    &:hover {
+        background-color:${props => props.theme.colors.yellow};
+    }
+
+    width:9em;
+    height:9em;
+    
+    align-content:center;
+    padding: 2em;
+`;
+
+const Wrapper = styled.section`
+    display: flex;
+    justify-content: space-evenly;
+    padding:2em;
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+
+
+`;
 
 
 function Meny (){
@@ -18,31 +64,40 @@ function Meny (){
 
 
     return(
-        <main>
-            <header>
-                <section>
-                    <p><Link href="/">Hjem</Link></p>
-                    <LogInOutBtn />
-                    <p> {user ? (
-                        <Link href="/cart">
-                        <a>Handlekurv <span>{basket.total} NOK</span></a>
-                        </Link>) : ("")}
-                    </p>
-                </section>
-            </header>
+        <Main>
+            <Header>
+                    <Link href="/"><h3>Børres Burger</h3></Link>
+                    <div>
+                        <LogInOutBtn />
+                        <p> {user ? (
+                            <Link href="/cart">
+                            <a>Handlekurv <span>{basket.total} NOK</span></a>
+                            </Link>) : ("")}
+                        </p>
+                        
+                    </div>
+            </Header>
             
             <h1>Meny</h1>
+                <Wrapper>
+                    <MenyBox>
+                        <Link href="/burgers">
+                            <h2>Burgere</h2>
+                        </Link>
+                    </MenyBox>
+                    <MenyBox>
+                        <Link href="/sides">
+                            <h2>Tilbehør</h2>
+                        </Link>
+                    </MenyBox>
+                    <MenyBox>
+                        <Link href="/drinks">
+                            <h2>Drikke</h2>
+                        </Link>
+                    </MenyBox> 
+                </Wrapper>   
             
-            <Link href="/burgers">
-                <h2>Burgere</h2>
-            </Link>
-            <Link href="/sides">
-                <h2>Tilbehør</h2>
-            </Link>
-            <Link href="/drinks">
-                <h2>Drikke</h2>
-            </Link>
-        </main>
+        </Main>
     )
 }
 

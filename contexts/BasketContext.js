@@ -11,10 +11,51 @@ export const Basket = ({ children }) => {
   const [productLines, setProductLines] = useState([]);
   const [total, setTotal] = useState(0);
 
-  const addProductLine = (product) => {
-    setProductLines([...productLines, product]);
-  };
 
+
+  
+  //localStorage
+
+  useEffect (() => {
+    let data = localStorage.getItem("productlines");
+    let data2 = JSON.parse(data);
+    if(data){
+      setProductLines(data2);
+    }
+  }, []); 
+
+  useEffect (() => {
+    localStorage.setItem("productlines", JSON.stringify(productLines));
+  }, [productLines]);
+
+  
+
+  //Add product
+
+  const addProductLine = (product) => {
+    const productInCart = productLines.filter((item) => item.id == product.id).length;
+
+    if(productInCart) {
+       const productIndex = productLines.findIndex((item) => item.id === product.id);
+
+       const newProductLines = productLines;
+       newProductLines[productIndex] = {
+           ...newProductLines[productIndex], 
+           antall: newProductLines[productIndex].antall += 1,
+           total: newProductLines[productIndex].pris * newProductLines[productIndex].antall
+       };
+
+       setProductLines([...newProductLines]);
+
+    } else {
+        let newProduct = {
+            total: product.pris,
+            ...product
+        }
+        setProductLines([...productLines, newProduct]);
+    }
+    
+  };
 
 
   //Remove from basket
@@ -23,24 +64,24 @@ export const Basket = ({ children }) => {
     setProductLines(filteredProductLines);
   };
 
-  
-  // //updateQuantity
-  // const updateQuantity = () => {
-  //   let quantityProductLine = 
-  //   setProductLines (quantityProductLine);
-  // }
-
-
   useEffect(() => {
-    const total = productLines.reduce((prev, cur) => {
+    const totalPrice = productLines.reduce((prev, cur) => {
         console.log("Lagt til", productLines);
-      return prev + cur.pris;
+      return prev + cur.total;
     }, 0);
-    setTotal(total);
+    setTotal(totalPrice);
   }, [productLines]);
 
+
+  //Clear cart after Order
+  const clearCart = () => {
+    setProductLines([]);
+  };
+
+
+
   return (
-    <BasketContext.Provider value={{ productLines, addProductLine, total, removeProductLine }}>
+    <BasketContext.Provider value={{ productLines, addProductLine, total, removeProductLine, clearCart }}>
       {children}
     </BasketContext.Provider>
   );

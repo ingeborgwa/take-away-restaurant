@@ -4,9 +4,14 @@ import firebase from '../../config/firebase';
 import { useAuth } from '../../auth';
 import { useRouter } from 'next/router';
 
+
+
+import StyledBtn from '../StyledBtn';
+
+
 const LogInOutBtn = () => {
   const router = useRouter();
-  const user = useAuth();
+  const {user} = useAuth();
 
   const handleSignout = async () => {
     await firebase.auth().signOut();
@@ -16,10 +21,10 @@ const LogInOutBtn = () => {
   return (
     <>
       {user ? (
-        <button onClick={handleSignout}>Logg ut</button>
+        <StyledBtn onClick={handleSignout}>Logg ut</StyledBtn>
       ) : (
         <>
-          <Link href="/login"><button>Logg inn</button></Link>
+          <Link href="/login"><StyledBtn>Logg inn</StyledBtn></Link>
         </>
       )}
     </>
